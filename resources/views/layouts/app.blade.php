@@ -11,12 +11,22 @@
         @endphp
         <title>{{ $appName }}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!-- Fonts (conditionally load CDN to avoid preview errors) -->
+        @if (env('CDN_FONTS', false))
+            <link rel="preconnect" href="https://fonts.bunny.net">
+            <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        @endif
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <style>
+            :root { --accent: #FF6B6B; --accent-10: rgba(255, 107, 107, 0.1); }
+            ::selection { background: var(--accent); color: white; }
+            .accent-fill { fill: var(--accent); }
+            .accent-stroke { stroke: var(--accent); }
+            .accent-bg-10 { background-color: var(--accent-10); }
+        </style>
     </head>
     <body class="font-sans antialiased bg-body">
         <div class="min-h-screen bg-body">
