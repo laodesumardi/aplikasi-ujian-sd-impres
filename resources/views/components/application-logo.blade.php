@@ -5,7 +5,18 @@
 
     // Generate URL for logo (prefer relative paths to avoid host/port mismatch)
     $logoUrl = null;
-    if ($logoPath) {
+    // 1) Prioritize logo files placed at public root (logo.jpeg/png/svg)
+    $primaryPublicCandidates = ['logo.jpeg', 'logo.png', 'logo.svg'];
+    foreach ($primaryPublicCandidates as $c) {
+        $full = public_path($c);
+        if (file_exists($full)) {
+            $relative = '/' . ltrim($c, '/');
+            $logoUrl = $relative . '?v=' . filemtime($full);
+            break;
+        }
+    }
+    // 2) If no public root logo found, use DB setting if available
+    if (!$logoUrl && $logoPath) {
         // Normalize path
         $normalizedPath = ltrim($logoPath, '/');
         $publicFile = public_path($normalizedPath);
@@ -22,7 +33,7 @@
         }
     }
 
-    // Fallback to default logo files if no database logo found
+    // 3) Fallback to default logo files if not found above
     if (!$logoUrl) {
         // Prioritize root public logo files first, then uploads/images
         $candidates = [
