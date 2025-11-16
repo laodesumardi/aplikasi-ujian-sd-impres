@@ -21,7 +21,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <style>
-            :root { --accent: #FF6B6B; --accent-10: rgba(255, 107, 107, 0.1); }
+            :root { --accent: #800e13; --accent-10: rgba(128, 14, 19, 0.1); }
             ::selection { background: var(--accent); color: white; }
             .accent-fill { fill: var(--accent); }
             .accent-stroke { stroke: var(--accent); }

@@ -12,11 +12,11 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: '#FF6B6B',
+                primary: '#800e13',
                 body: '#F5F5F5',
                 success: '#16a34a',
                 danger: '#DC2626',
-                accent: '#FF6B6B',
+                accent: '#800e13',
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
