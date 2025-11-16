@@ -24,15 +24,17 @@
 
     // Fallback to default logo files if no database logo found
     if (!$logoUrl) {
+        // Prioritize root public logo files first, then uploads/images
         $candidates = [
+            'logo.jpeg',
+            'logo.png',
+            'logo.svg',
             'uploads/logo.png',
             'uploads/logo.svg',
             'images/logo.png',
             'images/logo.jpg',
             'images/logo.jpeg',
             'images/logo.svg',
-            'logo.png',
-            'logo.svg',
         ];
         $logoFile = null;
         // Check storage first
