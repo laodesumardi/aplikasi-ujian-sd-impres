@@ -6,7 +6,7 @@
     // Generate URL for logo (prefer relative paths to avoid host/port mismatch)
     $logoUrl = null;
     // 1) Prioritize logo files placed at public root (logo.jpeg/png/svg)
-    $primaryPublicCandidates = ['logo.jpeg', 'logo.png', 'logo.svg'];
+    $primaryPublicCandidates = ['logo.png', 'logo.svg', 'logo.jpeg'];
     foreach ($primaryPublicCandidates as $c) {
         $full = public_path($c);
         if (file_exists($full)) {
@@ -37,9 +37,9 @@
     if (!$logoUrl) {
         // Prioritize root public logo files first, then uploads/images
         $candidates = [
-            'logo.jpeg',
             'logo.png',
             'logo.svg',
+            'logo.jpeg',
             'uploads/logo.png',
             'uploads/logo.svg',
             'images/logo.png',
